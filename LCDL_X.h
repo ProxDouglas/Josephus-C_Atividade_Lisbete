@@ -53,25 +53,26 @@ return verif;
 
 
 Lista inserir(Lista L, int x){
-	Celula *celula, *ultcelula;
+	Celula *celula, *ultmcelula;
 	celula = (Celula*) malloc(sizeof(Celula));
 	celula->item = x;
 	if(L == NULL){
 		celula->anterior = NULL;
 	}else{
 		
-		ultcelula = L->anterior;
-		if(ultcelula == NULL){
+		ultmcelula = L->anterior;
+		if(ultmcelula == NULL){
 			L->seguinte = celula;
-			ultcelula = celula;
+			L->anterior = celula;
 			celula->anterior = L;	
 		}
 		else{
-			ultcelula->seguinte = celula;
-			celula->anterior = ultcelula;
-			ultcelula = celula;
+			ultmcelula->seguinte = celula;
+			celula->anterior = ultmcelula;
+			L->anterior = celula;
 		}
 	}
+	
 	celula->seguinte = L;
 	L = celula;
 	return L;
@@ -79,7 +80,7 @@ Lista inserir(Lista L, int x){
 
 
 Lista InserirFimLista(Lista L, int x){
-	Celula* celula, *ultcelula;
+	Celula* celula, *ultmcelula;
 	celula = (Celula*) malloc(sizeof(Celula));
 	celula->item = x;
 	if(L == NULL){
@@ -93,8 +94,8 @@ Lista InserirFimLista(Lista L, int x){
 			L->seguinte = celula;
 		}
 		else {
-			ultcelula = L->anterior;
-			ultcelula->seguinte = celula;
+			ultmcelula = L->anterior;
+			ultmcelula->seguinte = celula;
 			celula->anterior = L->anterior;
 		}
 		celula->seguinte = L;
@@ -105,6 +106,30 @@ Lista InserirFimLista(Lista L, int x){
 
 
 Lista esvaziar(Lista L){
+	Celula *celula, *ultm;
+	
+	if(L != NULL){
+		celula = L->anterior;
+		do{
+			//ultm = celula;
+			celula = celula->anterior;
+			
+			//celula->seguinte == NULL;
+			//ultm = NULL;
+			//free(ultm);
+				
+		}while(celula !=L);
+		
+		//celula = NULL;
+		//free(celula);
+	}
+	
+	
+	
+	return L;
+}
+
+/*Lista esvaziar(Lista L){
 	Celula *celula, *ant;
 	
 	if(L != NULL){
@@ -117,7 +142,7 @@ Lista esvaziar(Lista L){
 		L = NULL;
 	}
 	return L;
-}
+}*/
 
 
 void mostrarLista(Lista L){	// a partir do primeiro
