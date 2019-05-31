@@ -5,7 +5,7 @@
   		Gabriel Ferreira
   		Douglas Santos
   Date: 6/06/2019 10:30
-  DescriÁ„o: ImplementaÁ„o de Lista Circular Duplamente Ligada
+  Descri√ß√£o: Implementa√ß√£o de Lista Circular Duplamente Ligada
 */
 
 #include <stdio.h>
@@ -29,11 +29,11 @@ typedef Celula *Lista;
 
 //Interface
 Lista criarListaVazia();    			//Cria uma Lista Vazia
-bool verificarVazia(Lista); 			//Devolve TRUE se a lista È vazia.
-void mostrarLista(Lista);   			//Mostra os elementos da lista no sentido hor·rio
+bool verificarVazia(Lista); 			//Devolve TRUE se a lista √© vazia.
+void mostrarLista(Lista);   			//Mostra os elementos da lista no sentido hor√°rio
 Lista inserir(Lista, int); 				//Acrescenta o item no inicio da Lista
 Lista InserirFimLista(Lista, int); 		//Acrescenta o item no fim da lista
-Lista remover (Lista, Celula*); 		//Remove a cÈlula referenciada
+Lista remover (Lista, Celula*); 		//Remove a c√©lula referenciada
 Lista esvaziar(Lista); 					//Remove todos os itens da lista
 void mostrarLista(Lista);
 
