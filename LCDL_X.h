@@ -10,8 +10,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-//#include "Booleano.h"
+//#include <stdbool.h>
+#include "Booleano.h"
 
 typedef struct Celula{
 	int item;
@@ -20,6 +20,12 @@ typedef struct Celula{
 }Celula;
 
 typedef Celula *Lista;
+
+/*typedef struct Celula{
+	int item;
+	struct Celula *inicio;
+	struct Celula *fim;
+}Lista;*/
 
 //Interface
 Lista criarListaVazia();    			//Cria uma Lista Vazia
@@ -37,75 +43,66 @@ Lista criarListaVazia(){
 	Lista L;
 	L = NULL;
 	return L;
-	
-	
 }
 
 bool verificarVazia(Lista L) {
-	bool verif = false;
-	
-	if (L == NULL){
-		verif = true;
-	}
-
+	bool verif = FALSE;
+	if (L == NULL)verif = TRUE;
 return verif;	
-
 }
+
 
 Lista inserir(Lista L, int x){
-	Celula *celula, *prox, *ult, *aux;
-	
+	Celula *celula, *ultcelula;
 	celula = (Celula*) malloc(sizeof(Celula));
-	prox = (Celula*) malloc(sizeof(Celula));
-	ult = (Celula*) malloc(sizeof(Celula));
-	aux = (Celula*) malloc(sizeof(Celula));
-	
 	celula->item = x;
-	
 	if(L == NULL){
+		celula->anterior = NULL;
+	}else{
+		
+		ultcelula = L->anterior;
+		if(ultcelula == NULL){
+			L->seguinte = celula;
+			ultcelula = celula;
+			celula->anterior = L;	
+		}
+		else{
+			ultcelula->seguinte = celula;
+			celula->anterior = ultcelula;
+			ultcelula = celula;
+		}
+	}
+	celula->seguinte = L;
+	L = celula;
+	return L;
+}
+
+
+Lista InserirFimLista(Lista L, int x){
+	Celula* celula, *ultcelula;
+	celula = (Celula*) malloc(sizeof(Celula));
+	celula->item = x;
+	if(L == NULL){
+		celula->anterior = NULL;
 		celula->seguinte = L;
-		celula->anterior = L;
 		L = celula;
 	}
 	else{
-		ult = L;
-		aux = ult;
-		do(ult->seguinte != L){
-			aux = ult;
-			ult = ult->seguinte;
+		if(L->anterior == NULL){
+			celula->anterior = L;
+			L->seguinte = celula;
 		}
-		prox = L;
-		prox->anterior = celula;
-		celula->seguinte = prox;
-    	ult->seguinte = L;
-		celula->anterior = aux;
-		L = celula;
+		else {
+			ultcelula = L->anterior;
+			ultcelula->seguinte = celula;
+			celula->anterior = L->anterior;
+		}
+		celula->seguinte = L;
+		L->anterior = celula;
 	}
 	return L;
 }
 
-Lista InserirFimLista(Lista L, int x){
-	Celula* celula, *prox, *ult, *aux;
-	celula = (Celula*) malloc(sizeof(Celula));
-	celula->item = x;
-	
-	if(L == NULL){
-		L = celula;
-		celula->seguinte = L;
-		celula->anterior = L;
-	}
-	else{
-		ult = L;
-		while(ult->seguinte != L){
-			aux = ult;
-			ult = ult->seguinte;
-		}
-		celula->seguinte = L;
-		aux->seguinte = celula;
-		celula->anterior = aux;
-	}
-	return L;
-}
 
 Lista esvaziar(Lista L){
 	Celula *celula, *ant;
@@ -123,19 +120,38 @@ Lista esvaziar(Lista L){
 }
 
 
-void mostrarLista(Lista p){		// a partir do primeiro
+void mostrarLista(Lista L){	// a partir do primeiro
     Lista apont;
     int k;
-    if (p == NULL) printf("lista vazia \n");
+    if (L == NULL) printf("lista vazia \n");
     else { 
      	//printf("\n lista = ");
-        apont = p; 
+        apont = L; 
         do {
             k = apont->item;  printf(" %d ", k);
             apont = apont->seguinte;
             //printf("\n apont = %d  p = %d ",apont, p);
         }
-        while (apont != p);
+        while (apont != L);
+    }
+    printf("\n");
+}
+
+void mostrarListaDoFim(Lista L){	// a partir do primeiro
+    Lista apont;
+    int k;
+    printf("\n");
+    if (L == NULL) printf("lista vazia \n");
+    else { 
+     	//printf("\n lista = ");
+        apont = L;
+		apont = apont->anterior; 
+        do {
+            k = apont->item;  printf(" %d ", k);
+            apont = apont->anterior;
+            //printf("\n apont = %d  p = %d ",apont, p);
+        }
+        while (apont != L->anterior);
     }
     printf("\n");
 }

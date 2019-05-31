@@ -3,15 +3,15 @@
   Autores:
   		Lucas Pereira
   		Gabriel Ferreira
-  		Douglas Santos
+  		Douglas Cavalcanti Teles dos Santos
   Date: 6/06/2019 10:30
   Descrição: Programa para simulação do problema de Josephus
 */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-//#include "Booleano.h"
+//#include <stdbool.h>
+#include "Booleano.h"
 #include "LCDL_X.h"
 
 //Interface
@@ -30,15 +30,18 @@ void main(){
 
 Lista L;
 L = criarListaVazia();
-bool verif = verificarVazia(L);
+bool verif ;
+verif = verificarVazia(L);
 
 mostrarLista(L);
 
 L = inserir(L, 1);
 L = inserir(L, 5);
 L = inserir(L, 10);
+L = inserir(L, 11);
 
 mostrarLista(L);
+mostrarListaDoFim(L);
 	
 	
 }
