@@ -5,24 +5,23 @@
   		Gabriel Ferreira
   		Douglas Cavalcanti Teles dos Santos
   Date: 6/06/2019 10:30
-  DescriÃ§Ã£o: Programa para simulaÃ§Ã£o do problema de Josephus
+  Descrição: Programa para simulação do problema de Josephus
 */
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <stdbool.h>
 #include "Booleano.h"
 #include "LCDL_6.h"
 
 //Interface
 void permutacaoJosephus (Lista, int, int);
-/* FUNÃ‡Ã•ES DO HEADER
+/* FUNÇÕES DO HEADER
 Lista criarListaVazia();    			//Cria uma Lista Vazia
-bool verificarVazia(Lista); 			//Devolve TRUE se a lista Ã© vazia.
-void mostrarLista(Lista);   			//Mostra os elementos da lista no sentido horÃ¡rio
+bool verificarVazia(Lista); 			//Devolve TRUE se a lista é vazia.
+void mostrarLista(Lista);   			//Mostra os elementos da lista no sentido horário
 Lista inserir(Lista, int); 				//Acrescenta o item no inicio da Lista
 Lista InserirFimLista(Lista, int); 		//Acrescenta o item no fim da lista
-Lista remover (Lista, Celula*); 		//Remove a cÃ©lula referenciada
+Lista remover (Lista, Celula*); 		//Remove a célula referenciada
 Lista esvaziar(Lista); 					//Remove todos os itens da lista
 */
 
@@ -33,12 +32,20 @@ L = criarListaVazia();
 bool verif ;
 verif = verificarVazia(L);
 
-mostrarLista(L);
+if(verif == TRUE){
+	mostrarLista(L);
+}
 
 L = inserir(L, 1);
-L = inserir(L, 5);
-L = inserir(L, 10);
-L = inserir(L, 11);
+L = inserir(L, 2);
+L = inserir(L, 3);
+L = inserir(L, 4);
+
+
+mostrarLista(L);
+mostrarListaDoFim(L);
+
+L = esvaziar(L);
 
 mostrarLista(L);
 mostrarListaDoFim(L);
@@ -47,7 +54,7 @@ mostrarListaDoFim(L);
 }
 
 void permutacaoJosephus (Lista L, int n, int m){
-//Mostra na tela a permutaÃ§Ã£o de Josephus, em que n= nÃºmero de pessoas no circulo e m = passo da morte
+//Mostra na tela a permutação de Josephus, em que n= número de pessoas no circulo e m = passo da morte
 
 	
 	

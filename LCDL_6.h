@@ -5,12 +5,11 @@
   		Gabriel Ferreira
   		Douglas Santos
   Date: 6/06/2019 10:30
-  DescriÃ§Ã£o: ImplementaÃ§Ã£o de Lista Circular Duplamente Ligada
+  Descrição: Implementação de Lista Circular Duplamente Ligada
 */
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <stdbool.h>
 #include "Booleano.h"
 
 typedef struct Celula{
@@ -21,21 +20,17 @@ typedef struct Celula{
 
 typedef Celula *Lista;
 
-/*typedef struct Celula{
-	int item;
-	struct Celula *inicio;
-	struct Celula *fim;
-}Lista;*/
 
 //Interface
 Lista criarListaVazia();    			//Cria uma Lista Vazia
-bool verificarVazia(Lista); 			//Devolve TRUE se a lista Ã© vazia.
-void mostrarLista(Lista);   			//Mostra os elementos da lista no sentido horÃ¡rio
+bool verificarVazia(Lista); 			//Devolve TRUE se a lista é vazia.
+void mostrarLista(Lista);   			//Mostra os elementos da lista no sentido horário
 Lista inserir(Lista, int); 				//Acrescenta o item no inicio da Lista
 Lista InserirFimLista(Lista, int); 		//Acrescenta o item no fim da lista
-Lista remover (Lista, Celula*); 		//Remove a cÃ©lula referenciada
+Lista remover (Lista, Celula*); 		//Remove a célula referenciada
 Lista esvaziar(Lista); 					//Remove todos os itens da lista
-void mostrarLista(Lista);
+
+void mostrarListaDoFim(Lista);
 
 
 Lista criarListaVazia(){
@@ -49,6 +44,23 @@ bool verificarVazia(Lista L) {
 	bool verif = FALSE;
 	if (L == NULL)verif = TRUE;
 return verif;	
+}
+
+void mostrarLista(Lista L){	// a partir do primeiro
+    Lista apont;
+    int k;
+    if (L == NULL) printf("lista vazia \n");
+    else { 
+     	//printf("\n lista = ");
+        apont = L; 
+        do {
+            k = apont->item;  printf(" %d ", k);
+            apont = apont->seguinte;
+            //printf("\n apont = %d  p = %d ",apont, p);
+        }
+        while (apont != L);
+    }
+    printf("\n");
 }
 
 
@@ -104,63 +116,51 @@ Lista InserirFimLista(Lista L, int x){
 	return L;
 }
 
+Lista remover (Lista L, Celula* eliminado){
+	Celula *celula, *prox;
+	
+	prox = eliminado->seguinte;
+	celula = eliminado->anterior;
+	
+	celula->seguinte = prox;
+	prox->anterior = celula;
+	
+	if(eliminado == L){
+		L = prox;
+	}
+	
+	eliminado->seguinte = NULL;
+	eliminado->anterior = NULL;
+	eliminado = NULL;
+	
+	free(eliminado);
+	
+	return L;
+}
+
 
 Lista esvaziar(Lista L){
 	Celula *celula, *ultm;
 	
 	if(L != NULL){
 		celula = L->anterior;
+		L->anterior = NULL;
 		do{
-			//ultm = celula;
+			ultm = celula;
 			celula = celula->anterior;
-			
-			//celula->seguinte == NULL;
-			//ultm = NULL;
-			//free(ultm);
+			celula->seguinte == NULL;
+			ultm->seguinte = NULL;
+			ultm->anterior = NULL;
+			ultm = NULL;
+			free(ultm);
 				
-		}while(celula !=L);
-		
-		//celula = NULL;
-		//free(celula);
-	}
-	
-	
-	
-	return L;
-}
-
-/*Lista esvaziar(Lista L){
-	Celula *celula, *ant;
-	
-	if(L != NULL){
-		celula = L;
-		do{
-			ant = celula;
-			celula = celula->seguinte;
-			free(ant);
-		}while(celula->seguinte != NULL);
+		}while(celula != L);	
 		L = NULL;
+		free(L);
 	}
 	return L;
-}*/
-
-
-void mostrarLista(Lista L){	// a partir do primeiro
-    Lista apont;
-    int k;
-    if (L == NULL) printf("lista vazia \n");
-    else { 
-     	//printf("\n lista = ");
-        apont = L; 
-        do {
-            k = apont->item;  printf(" %d ", k);
-            apont = apont->seguinte;
-            //printf("\n apont = %d  p = %d ",apont, p);
-        }
-        while (apont != L);
-    }
-    printf("\n");
 }
+
 
 void mostrarListaDoFim(Lista L){	// a partir do primeiro
     Lista apont;
