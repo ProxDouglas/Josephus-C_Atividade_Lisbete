@@ -50,6 +50,7 @@ return verif;
 void mostrarLista(Lista L){	// a partir do primeiro
     Lista apont;
     int k;
+    printf("\nLista:\n ");
     if (L == NULL) printf("lista vazia \n");
     else { 
      	//printf("\n lista = ");
@@ -114,7 +115,7 @@ Lista inserirFimLista(Lista L, int x){
 Lista remover (Lista L, Celula* eliminado){
 	Celula *ant, *prox;
 	
-	if( L != eliminado->seguinte){ //eliminado->seguinte != NULL &&
+	if( L != L->seguinte){ //eliminado->seguinte != NULL &&
 		prox = eliminado->seguinte;
 		ant = eliminado->anterior;
 	
@@ -124,6 +125,7 @@ Lista remover (Lista L, Celula* eliminado){
 		if(eliminado == L){
 			L = prox;
 		}
+		
 		
 	}else{
 		L = NULL;
@@ -141,8 +143,7 @@ Lista remover (Lista L, Celula* eliminado){
 
 Lista esvaziar(Lista L){
 	Celula *celula, *ultm;
-	
-	if(L != NULL){
+	if(L != NULL && L->seguinte !=NULL){
 		celula = L->anterior;
 		L->anterior = NULL;
 		do{
@@ -158,14 +159,37 @@ Lista esvaziar(Lista L){
 		L = NULL;
 		free(L);
 	}
+	else if(L != NULL && L->seguinte == NULL){
+		printf("\nEntrou\n");
+		L = NULL;
+		free(L);
+	}
 	return L;
+}
+
+
+void permutacaoJosephus (Lista L, int n, int m){
+//Mostra na tela a permutação de Josephus, em que n= número de pessoas no circulo e m = passo da morte
+	Celula* ponteiro, *eliminado;
+	int i;
+	ponteiro = L;
+	printf("\nSequencia de exclusao\n");
+	while(!verificarVazia(L)){
+		eliminado = ponteiro;
+		for(i=1; i<m; i++){
+			eliminado = eliminado->seguinte;
+		}
+		ponteiro = eliminado->seguinte;
+		printf(" %i ", eliminado->item);
+		L = remover(L, eliminado);
+	}
 }
 
 
 void mostrarListaDoFim(Lista L){	// a partir do primeiro
     Lista apont;
     int k;
-    printf("\n");
+    printf("\nLista: \n");
     if (L == NULL) printf("lista vazia \n");
     else { 
      	//printf("\n lista = ");
@@ -182,11 +206,3 @@ void mostrarListaDoFim(Lista L){	// a partir do primeiro
 }
 
 
-
-
-void permutacaoJosephus (Lista L, int n, int m){
-//Mostra na tela a permutação de Josephus, em que n= número de pessoas no circulo e m = passo da morte
-	
-	
-	
-}

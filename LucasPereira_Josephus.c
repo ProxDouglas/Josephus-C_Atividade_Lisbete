@@ -31,21 +31,26 @@ Lista esvaziar(Lista); 					//Remove todos os itens da lista
 
 void main(){
 
-Lista L, L2;
-bool verif ;
+Lista L;
 int n = 0, m = 0, i;
-n = 10;
-L = criarListaN(L, n);	
+n = 7;
+m = 3;
+L = criarListaN(L, n);
+mostrarLista(L);
+
+permutacaoJosephus (L, n, m);
+L = esvaziar(L);
+	
 mostrarLista(L);
 }
 
 
 Lista criarListaN(Lista L, int n){
-int i;
-L = criarListaVazia();
-for (i=1;i<=n;i++){
-L = inserirFimLista(L, i); 	
-}
+	int i;
+	//L = criarListaVazia();
+	for (i=1;i<=n;i++){
+		L = inserirFimLista(L, i); 	
+	}
 return L;	
 }
 
