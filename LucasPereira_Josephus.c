@@ -16,50 +16,21 @@
 //Interface
 void permutacaoJosephus (Lista, int, int);
 /* FUNÇÕES DO HEADER
-Lista criarListaVazia();    			//Cria uma Lista Vazia
-bool verificarVazia(Lista); 			//Devolve TRUE se a lista é vazia.
-void mostrarLista(Lista);   			//Mostra os elementos da lista no sentido horário
-Lista inserir(Lista, int); 				//Acrescenta o item no inicio da Lista
-Lista InserirFimLista(Lista, int); 		//Acrescenta o item no fim da lista
-Lista remover (Lista, Celula*); 		//Remove a célula referenciada
-Lista esvaziar(Lista); 					//Remove todos os itens da lista
+Lista criarListaVazia();    					//Cria uma Lista Vazia
+bool verificarVazia(Lista); 					//Devolve TRUE se a lista é vazia.
+void mostrarLista(Lista);   					//Mostra os elementos da lista no sentido horário
+Lista inserir(Lista, int); 						//Acrescenta o item no inicio da Lista
+Lista InserirFimLista(Lista, int); 				//Acrescenta o item no fim da lista
+Lista remover (Lista, Celula*); 				//Remove a célula referenciada
+Lista esvaziar(Lista); 							//Remove todos os itens da lista
+void permutacaoJosephus (Lista , int , int ); //Permutação de Josephus 
 */
 
 void main(){
-
 Lista L;
-L = criarListaVazia();
-bool verif ;
-verif = verificarVazia(L);
-
-if(verif == TRUE){
-	mostrarLista(L);
-}
-
-L = inserir(L, 1);
-L = inserir(L, 2);
-L = inserir(L, 3);
-L = inserir(L, 4);
-
-
+int n = 10;
+L = criarListaN(L, n);	
 mostrarLista(L);
-mostrarListaDoFim(L);
-
-L = esvaziar(L);
-
-mostrarLista(L);
-mostrarListaDoFim(L);
-	
-	
 }
 
-void permutacaoJosephus (Lista L, int n, int m){
-//Mostra na tela a permutação de Josephus, em que n= número de pessoas no circulo e m = passo da morte
 
-	
-	
-	
-	
-	
-	
-}

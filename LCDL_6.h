@@ -22,15 +22,16 @@ typedef Celula *Lista;
 
 
 //Interface
-Lista criarListaVazia();    			//Cria uma Lista Vazia
-bool verificarVazia(Lista); 			//Devolve TRUE se a lista é vazia.
-void mostrarLista(Lista);   			//Mostra os elementos da lista no sentido horário
-Lista inserir(Lista, int); 				//Acrescenta o item no inicio da Lista
-Lista InserirFimLista(Lista, int); 		//Acrescenta o item no fim da lista
-Lista remover (Lista, Celula*); 		//Remove a célula referenciada
-Lista esvaziar(Lista); 					//Remove todos os itens da lista
-
+Lista criarListaVazia();    					//Cria uma Lista Vazia
+bool verificarVazia(Lista); 					//Devolve TRUE se a lista é vazia.
+void mostrarLista(Lista);   					//Mostra os elementos da lista no sentido horário
+Lista inserir(Lista, int); 						//Acrescenta o item no inicio da Lista
+Lista inserirFimLista(Lista, int); 				//Acrescenta o item no fim da lista
+Lista remover (Lista, Celula*); 				//Remove a célula referenciada
+Lista esvaziar(Lista); 							//Remove todos os itens da lista
+void permutacaoJosephus (Lista , int , int ); //Permutação de Josephus
 void mostrarListaDoFim(Lista);
+Lista criarListaN(Lista , int );
 
 
 Lista criarListaVazia(){
@@ -91,7 +92,7 @@ Lista inserir(Lista L, int x){
 }
 
 
-Lista InserirFimLista(Lista L, int x){
+Lista inserirFimLista(Lista L, int x){
 	Celula* celula, *ultmcelula;
 	celula = (Celula*) malloc(sizeof(Celula));
 	celula->item = x;
@@ -179,4 +180,33 @@ void mostrarListaDoFim(Lista L){	// a partir do primeiro
         while (apont != L->anterior);
     }
     printf("\n");
+}
+
+Lista criarListaN(Lista L, int n){
+
+
+int i;
+
+
+L = criarListaVazia();
+
+for (i=1;i<=n;i++){
+L = inserirFimLista(L, i); 	
+}
+	
+	
+return L;
+	
+}
+
+
+void permutacaoJosephus (Lista L, int n, int m){
+//Mostra na tela a permutação de Josephus, em que n= número de pessoas no circulo e m = passo da morte
+
+	
+	
+	
+	
+	
+	
 }
