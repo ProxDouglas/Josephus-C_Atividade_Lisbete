@@ -13,24 +13,40 @@
 #include "Booleano.h"
 #include "LCDL_6.h"
 
+
+Lista criarListaN(Lista, int );
+
+
 //Interface
-void permutacaoJosephus (Lista, int, int);
+//void permutacaoJosephus (Lista, int, int);
 /* FUNÇÕES DO HEADER
-Lista criarListaVazia();    					//Cria uma Lista Vazia
-bool verificarVazia(Lista); 					//Devolve TRUE se a lista é vazia.
-void mostrarLista(Lista);   					//Mostra os elementos da lista no sentido horário
-Lista inserir(Lista, int); 						//Acrescenta o item no inicio da Lista
-Lista InserirFimLista(Lista, int); 				//Acrescenta o item no fim da lista
-Lista remover (Lista, Celula*); 				//Remove a célula referenciada
-Lista esvaziar(Lista); 							//Remove todos os itens da lista
-void permutacaoJosephus (Lista , int , int ); //Permutação de Josephus 
+Lista criarListaVazia();    			//Cria uma Lista Vazia
+bool verificarVazia(Lista); 			//Devolve TRUE se a lista é vazia.
+void mostrarLista(Lista);   			//Mostra os elementos da lista no sentido horário
+Lista inserir(Lista, int); 				//Acrescenta o item no inicio da Lista
+Lista InserirFimLista(Lista, int); 		//Acrescenta o item no fim da lista
+Lista remover (Lista, Celula*); 		//Remove a célula referenciada
+Lista esvaziar(Lista); 					//Remove todos os itens da lista
 */
 
 void main(){
-Lista L;
-int n = 10;
+
+Lista L, L2;
+bool verif ;
+int n = 0, m = 0, i;
+n = 10;
 L = criarListaN(L, n);	
 mostrarLista(L);
+}
+
+
+Lista criarListaN(Lista L, int n){
+int i;
+L = criarListaVazia();
+for (i=1;i<=n;i++){
+L = inserirFimLista(L, i); 	
+}
+return L;	
 }
 
 

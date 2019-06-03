@@ -3,9 +3,9 @@
   Autores:
   		Lucas Pereira
   		Gabriel Ferreira
-  		Douglas Santos
+  		Douglas Cavalcanti Teles dos Santos
   Date: 6/06/2019 10:30
-  Descri√ß√£o: Implementa√ß√£o de Lista Circular Duplamente Ligada
+  DescriÁ„o: ImplementaÁ„o de Lista Circular Duplamente Ligada
 */
 
 #include <stdio.h>
@@ -22,16 +22,16 @@ typedef Celula *Lista;
 
 
 //Interface
-Lista criarListaVazia();    					//Cria uma Lista Vazia
-bool verificarVazia(Lista); 					//Devolve TRUE se a lista √© vazia.
-void mostrarLista(Lista);   					//Mostra os elementos da lista no sentido hor√°rio
-Lista inserir(Lista, int); 						//Acrescenta o item no inicio da Lista
-Lista inserirFimLista(Lista, int); 				//Acrescenta o item no fim da lista
-Lista remover (Lista, Celula*); 				//Remove a c√©lula referenciada
-Lista esvaziar(Lista); 							//Remove todos os itens da lista
-void permutacaoJosephus (Lista , int , int ); //Permuta√ß√£o de Josephus
+Lista criarListaVazia(); 	 			//Cria uma Lista Vazia
+bool verificarVazia(Lista); 			//Devolve TRUE se a lista È vazia.
+void mostrarLista(Lista);   			//Mostra os elementos da lista no sentido hor·rio
+Lista inserir(Lista, int); 				//Acrescenta o item no inicio da Lista
+Lista inserirFimLista(Lista, int); 		//Acrescenta o item no fim da lista
+Lista remover (Lista, Celula*); 		//Remove a cÈlula referenciada
+Lista esvaziar(Lista); 					//Remove todos os itens da lista
+void permutacaoJosephus (Lista L, int n, int m); 
+
 void mostrarListaDoFim(Lista);
-Lista criarListaN(Lista , int );
 
 
 Lista criarListaVazia(){
@@ -89,6 +89,7 @@ Lista inserir(Lista L, int x){
 	L = celula;
 	return L;
 }
+
 
 
 Lista inserirFimLista(Lista L, int x){
@@ -180,30 +181,11 @@ void mostrarListaDoFim(Lista L){	// a partir do primeiro
     printf("\n");
 }
 
-Lista criarListaN(Lista L, int n){
 
-
-int i;
-
-
-L = criarListaVazia();
-
-for (i=1;i<=n;i++){
-L = inserirFimLista(L, i); 	
-}
-	
-	
-return L;
-	
-}
 
 
 void permutacaoJosephus (Lista L, int n, int m){
-//Mostra na tela a permuta√ß√£o de Josephus, em que n= n√∫mero de pessoas no circulo e m = passo da morte
-
-	
-	
-	
+//Mostra na tela a permutaÁ„o de Josephus, em que n= n˙mero de pessoas no circulo e m = passo da morte
 	
 	
 	
