@@ -5,7 +5,7 @@
   		Gabriel Ferreira
   		Douglas Santos
   Date: 6/06/2019 10:30
-  Descrição: Implementação de Lista Circular Duplamente Ligada
+  DescriÃ§Ã£o: ImplementaÃ§Ã£o de Lista Circular Duplamente Ligada
 */
 
 #include <stdio.h>
@@ -23,13 +23,13 @@ typedef Celula *Lista;
 
 //Interface
 Lista criarListaVazia();    					//Cria uma Lista Vazia
-bool verificarVazia(Lista); 					//Devolve TRUE se a lista é vazia.
-void mostrarLista(Lista);   					//Mostra os elementos da lista no sentido horário
+bool verificarVazia(Lista); 					//Devolve TRUE se a lista Ã© vazia.
+void mostrarLista(Lista);   					//Mostra os elementos da lista no sentido horÃ¡rio
 Lista inserir(Lista, int); 						//Acrescenta o item no inicio da Lista
 Lista inserirFimLista(Lista, int); 				//Acrescenta o item no fim da lista
-Lista remover (Lista, Celula*); 				//Remove a célula referenciada
+Lista remover (Lista, Celula*); 				//Remove a cÃ©lula referenciada
 Lista esvaziar(Lista); 							//Remove todos os itens da lista
-void permutacaoJosephus (Lista , int , int ); //Permutação de Josephus
+void permutacaoJosephus (Lista , int , int ); //PermutaÃ§Ã£o de Josephus
 void mostrarListaDoFim(Lista);
 Lista criarListaN(Lista , int );
 
@@ -70,23 +70,22 @@ Lista inserir(Lista L, int x){
 	celula = (Celula*) malloc(sizeof(Celula));
 	celula->item = x;
 	if(L == NULL){
-		celula->anterior = NULL;
+		celula->anterior = celula;
 	}else{
 		
 		ultmcelula = L->anterior;
-		if(ultmcelula == NULL){
-			L->seguinte = celula;
-			L->anterior = celula;
-			celula->anterior = L;	
-		}
-		else{
-			ultmcelula->seguinte = celula;
-			celula->anterior = ultmcelula;
-			L->anterior = celula;
-		}
+		ultmcelula->seguinte = celula;
+		celula->anterior = ultmcelula;
+		L->anterior = celula;
 	}
 	
-	celula->seguinte = L;
+	if(L != NULL){
+		celula->seguinte = L;
+	}
+	else{
+		celula->seguinte = celula;
+	}
+	
 	L = celula;
 	return L;
 }
@@ -97,20 +96,14 @@ Lista inserirFimLista(Lista L, int x){
 	celula = (Celula*) malloc(sizeof(Celula));
 	celula->item = x;
 	if(L == NULL){
-		celula->anterior = NULL;
-		celula->seguinte = L;
+		celula->anterior = celula;
+		celula->seguinte = celula;
 		L = celula;
 	}
 	else{
-		if(L->anterior == NULL){
-			celula->anterior = L;
-			L->seguinte = celula;
-		}
-		else {
-			ultmcelula = L->anterior;
-			ultmcelula->seguinte = celula;
-			celula->anterior = L->anterior;
-		}
+		ultmcelula = L->anterior;
+		ultmcelula->seguinte = celula;
+		celula->anterior = L->anterior;
 		celula->seguinte = L;
 		L->anterior = celula;
 	}
@@ -118,16 +111,21 @@ Lista inserirFimLista(Lista L, int x){
 }
 
 Lista remover (Lista L, Celula* eliminado){
-	Celula *celula, *prox;
+	Celula *ant, *prox;
 	
-	prox = eliminado->seguinte;
-	celula = eliminado->anterior;
+	if( L != eliminado->seguinte){ //eliminado->seguinte != NULL &&
+		prox = eliminado->seguinte;
+		ant = eliminado->anterior;
 	
-	celula->seguinte = prox;
-	prox->anterior = celula;
+		ant->seguinte = prox;
+		prox->anterior = ant;
 	
-	if(eliminado == L){
-		L = prox;
+		if(eliminado == L){
+			L = prox;
+		}
+		
+	}else{
+		L = NULL;
 	}
 	
 	eliminado->seguinte = NULL;
@@ -201,7 +199,7 @@ return L;
 
 
 void permutacaoJosephus (Lista L, int n, int m){
-//Mostra na tela a permutação de Josephus, em que n= número de pessoas no circulo e m = passo da morte
+//Mostra na tela a permutaÃ§Ã£o de Josephus, em que n= nÃºmero de pessoas no circulo e m = passo da morte
 
 	
 	
