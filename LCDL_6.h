@@ -4,6 +4,7 @@
   		Lucas Pereira
   		Gabriel Ferreira
   		Douglas Cavalcanti Teles dos Santos
+  		Vinicius Oliveira Souza
   Date: 6/06/2019 10:30
   Descrição: Implementação de Lista Circular Duplamente Ligada
 */
@@ -50,7 +51,7 @@ return verif;
 void mostrarLista(Lista L){	// a partir do primeiro
     Lista apont;
     int k;
-    printf("\nLista:\n ");
+    printf("\nLista: ");
     if (L == NULL) printf("lista vazia \n");
     else { 
      	//printf("\n lista = ");
@@ -160,7 +161,6 @@ Lista esvaziar(Lista L){
 		free(L);
 	}
 	else if(L != NULL && L->seguinte == NULL){
-		printf("\nEntrou\n");
 		L = NULL;
 		free(L);
 	}
@@ -173,7 +173,7 @@ Lista permutacaoJosephus (Lista L, int n, int m){
 	Celula* ponteiro, *eliminado;
 	int i;
 	ponteiro = L;
-	printf("\nSequencia de exclusao\n");
+	printf("\nSequencia de exclusao: ");
 	while(!verificarVazia(L)){
 		eliminado = ponteiro;
 		for(i=1; i<m; i++){
@@ -182,6 +182,9 @@ Lista permutacaoJosephus (Lista L, int n, int m){
 		ponteiro = eliminado->seguinte;
 		printf(" %i ", eliminado->item);
 		L = remover(L, eliminado);
+	}
+	if(verificarVazia(L)){
+		printf("\n\nSobrevivente = %d \n", eliminado->item);
 	}
 	return L;
 }

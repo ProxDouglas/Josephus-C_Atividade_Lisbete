@@ -4,6 +4,7 @@
   		Lucas Pereira
   		Gabriel Ferreira
   		Douglas Cavalcanti Teles dos Santos
+  		Vinicius Oliveira Souza
   Date: 6/06/2019 10:30
   Descrição: Programa para simulação do problema de Josephus
 */
@@ -32,11 +33,9 @@ Lista esvaziar(Lista); 					//Remove todos os itens da lista
 void main(){
 
 Lista L;
-int n = 0, m = 0, i;
+int n = 0, m = 0;
 n = 7;
 m = 3;
-L = criarListaVazia();
-//L = inserirFimLista(L, i);
 L = criarListaN(L, n);
 mostrarLista(L);
 
@@ -49,9 +48,9 @@ mostrarLista(L);
 
 Lista criarListaN(Lista L, int n){
 	int i;
-	//L = criarListaVazia();
+	L = criarListaVazia();
 	for (i=1;i<=n;i++){
-		L = inserirFimLista(L, i);
+		L = inserirFimLista(L, i);	
 	}
 return L;	
 }
