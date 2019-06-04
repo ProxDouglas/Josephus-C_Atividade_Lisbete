@@ -35,11 +35,13 @@ Lista L;
 int n = 0, m = 0, i;
 n = 7;
 m = 3;
+L = criarListaVazia();
+//L = inserirFimLista(L, i);
 L = criarListaN(L, n);
 mostrarLista(L);
 
-permutacaoJosephus (L, n, m);
-L = esvaziar(L);
+L = permutacaoJosephus (L, n, m);
+//L = esvaziar(L);
 	
 mostrarLista(L);
 }
@@ -49,7 +51,7 @@ Lista criarListaN(Lista L, int n){
 	int i;
 	//L = criarListaVazia();
 	for (i=1;i<=n;i++){
-		L = inserirFimLista(L, i); 	
+		L = inserirFimLista(L, i);
 	}
 return L;	
 }

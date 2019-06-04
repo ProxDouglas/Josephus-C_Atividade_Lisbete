@@ -29,7 +29,7 @@ Lista inserir(Lista, int); 				//Acrescenta o item no inicio da Lista
 Lista inserirFimLista(Lista, int); 		//Acrescenta o item no fim da lista
 Lista remover (Lista, Celula*); 		//Remove a célula referenciada
 Lista esvaziar(Lista); 					//Remove todos os itens da lista
-void permutacaoJosephus (Lista L, int n, int m); 
+Lista permutacaoJosephus (Lista L, int n, int m); 
 
 void mostrarListaDoFim(Lista);
 
@@ -168,7 +168,7 @@ Lista esvaziar(Lista L){
 }
 
 
-void permutacaoJosephus (Lista L, int n, int m){
+Lista permutacaoJosephus (Lista L, int n, int m){
 //Mostra na tela a permutação de Josephus, em que n= número de pessoas no circulo e m = passo da morte
 	Celula* ponteiro, *eliminado;
 	int i;
@@ -183,6 +183,7 @@ void permutacaoJosephus (Lista L, int n, int m){
 		printf(" %i ", eliminado->item);
 		L = remover(L, eliminado);
 	}
+	return L;
 }
 
 
