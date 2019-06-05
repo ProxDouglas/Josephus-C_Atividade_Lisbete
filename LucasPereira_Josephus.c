@@ -1,7 +1,7 @@
 /*
   Arquivo: LucasPereira_Josephus.c
   Autores:
-  		Lucas Pereira
+  		Lucas Stefenoni de Aquino Pereira
   		Gabriel Ferreira
   		Douglas Cavalcanti Teles dos Santos
   		Vinicius Oliveira Souza
@@ -42,7 +42,7 @@ mostrarLista(L);
 L = permutacaoJosephus (L, n, m);
 //L = esvaziar(L);
 	
-mostrarLista(L);
+//mostrarLista(L);
 }
 
 

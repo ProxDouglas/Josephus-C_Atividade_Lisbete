@@ -1,7 +1,7 @@
 /*
-  Arquivo: LCDL_X.c
+  Arquivo: LCDL_6.c
   Autores:
-  		Lucas Pereira
+  		Lucas Stefenoni de Aquino Pereira
   		Gabriel Ferreira
   		Douglas Cavalcanti Teles dos Santos
   		Vinicius Oliveira Souza
