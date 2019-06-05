@@ -2,7 +2,7 @@
   Arquivo: LCDL_6.c
   Autores:
   		Lucas Stefenoni de Aquino Pereira
-  		Gabriel Ferreira
+  		Gabriel Ferreira Lima Silva
   		Douglas Cavalcanti Teles dos Santos
   		Vinicius Oliveira Souza
   Date: 6/06/2019 10:30
