@@ -6,7 +6,7 @@
   		Douglas Cavalcanti Teles dos Santos
   		Vinicius Oliveira Souza
   Date: 6/06/2019 10:30
-  Descrição: Implementação de Lista Circular Duplamente Ligada
+  DescriÃ§Ã£o: ImplementaÃ§Ã£o de Lista Circular Duplamente Ligada
 */
 
 #include <stdio.h>
@@ -24,11 +24,11 @@ typedef Celula *Lista;
 
 //Interface
 Lista criarListaVazia(); 	 			//Cria uma Lista Vazia
-bool verificarVazia(Lista); 			//Devolve TRUE se a lista é vazia.
-void mostrarLista(Lista);   			//Mostra os elementos da lista no sentido horário
+bool verificarVazia(Lista); 			//Devolve TRUE se a lista Ã© vazia.
+void mostrarLista(Lista);   			//Mostra os elementos da lista no sentido horÃ¡rio
 Lista inserir(Lista, int); 				//Acrescenta o item no inicio da Lista
 Lista inserirFimLista(Lista, int); 		//Acrescenta o item no fim da lista
-Lista remover (Lista, Celula*); 		//Remove a célula referenciada
+Lista remover (Lista, Celula*); 		//Remove a cÃ©lula referenciada
 Lista esvaziar(Lista); 					//Remove todos os itens da lista
 Lista permutacaoJosephus (Lista L, int n, int m); 
 
@@ -160,28 +160,24 @@ Lista esvaziar(Lista L){
 		L = NULL;
 		free(L);
 	}
-	else if(L != NULL && L->seguinte == NULL){
-		L = NULL;
-		free(L);
-	}
 	return L;
 }
 
 
 Lista permutacaoJosephus (Lista L, int n, int m){
-//Mostra na tela a permutação de Josephus, em que n= número de pessoas no circulo e m = passo da morte
+//Mostra na tela a permutaÃ§Ã£o de Josephus, em que n= nÃºmero de pessoas no circulo e m = passo da morte
 	Celula* ponteiro, *eliminado;
 	int i;
 	ponteiro = L;
 	printf("\nSequencia de exclusao: ");
-	while(!verificarVazia(L)){
+	while(!verificarVazia(L)){      //repete atÃ© que seja vazia
 		eliminado = ponteiro;
 		for(i=1; i<m; i++){
 			eliminado = eliminado->seguinte;
 		}
 		ponteiro = eliminado->seguinte;
 		printf(" %i ", eliminado->item);
-		L = remover(L, eliminado);
+		L = remover(L, eliminado);      // remove a partir do endereco da celula
 	}
 	if(verificarVazia(L)){
 		printf("\n\nSobrevivente = %d \n", eliminado->item);
